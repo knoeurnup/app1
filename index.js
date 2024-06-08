@@ -10,6 +10,7 @@ app.get('/getting', function(req, res){
 	res.send("hello world in app1 is deployed");
 });
 
+
 app.listen(8080,function(){
 	console.log('app is running in port 8080');
 })
