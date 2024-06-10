@@ -6,12 +6,16 @@ app.get('/', function(req, res){
 });
 
 app.get('/hello', function(req, res){
-	res.send("Welcomn is deployed");
+	res.send("Say hello from app1");
 });
 
 
 app.get('/hi', function(req, res){
 	res.send("Say hi from app1");
+});
+
+app.get('/test', function(){
+	res.send("App1 new test url ");
 });
 
 app.listen(8080,function(){
