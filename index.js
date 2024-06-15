@@ -18,6 +18,7 @@ app.get('/test', function(req, res){
 	res.send("App1 new test url ");
 });
 
+
 app.get('/user',function(req, res){
 	res.send("App1- user api url");
 });
