@@ -66,7 +66,13 @@ pipeline {
                 try{
                   def currentVersion = getNewVersion()
                   sendTelegramMessage( "Starting to push image : ${env.DOCKER_REGISTRY_USER}/${env.DOCKER_IMAGE}:${currentVersion} " ) ;
-                  sh(script: "docker push ${env.DOCKER_REGISTRY_USER}/${env.DOCKER_IMAGE}:${currentVersion}", returnStatus: true)
+                  def command = """
+                      docker login --username "knoeurn" --password "Docker@3636"
+                      docker push ${env.DOCKER_REGISTRY_USER}/${env.DOCKER_IMAGE}:${currentVersion}
+                      """
+
+                  sh(script: command, returnStatus: true)
+                  // sh(script: "docker push ${env.DOCKER_REGISTRY_USER}/${env.DOCKER_IMAGE}:${currentVersion}", returnStatus: true)
 
                   sendTelegramMessage( "This image ${env.DOCKER_REGISTRY_USER}/${env.DOCKER_IMAGE}:${currentVersion} was successfully pushed to the server")
                   
@@ -165,10 +171,10 @@ pipeline {
 
     post {
         failure {
-            sendTelegramMessage( "This block (failture) runs when the build is failed.")
+            sendTelegramMessage( "Oops!! Your app was built and deployed fail.")
         }
         success {
-            sendTelegramMessage( "This block (success) runs when the build is succeeded.")
+            sendTelegramMessage( "Congratulations!!!  Your app was built and deployed successfully.")
         }
     }
 }
