@@ -112,6 +112,8 @@ pipeline {
                             if(key=="APP1_VERSION"){
                                 if(value!= getNewVersion()){
                                     newEnvironmentFileContent +="${key}=${getNewVersion()}\n"
+                                }else{
+                                  newEnvironmentFileContent +="${key}=${value}\n"
                                 }
                             }else if(key=="APP2_VERSION"){
                                 newEnvironmentFileContent +="${key}=${value}\n"
