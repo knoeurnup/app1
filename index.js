@@ -27,6 +27,9 @@ app.get('/account',function(req, res){
 	res.send("App1- account api url");
 });
 
+app.get('/account-1',function(req, res){
+	res.send("App1- account api url");
+});
 
 
 app.listen(8080,function(){
